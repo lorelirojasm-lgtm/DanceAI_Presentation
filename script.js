@@ -14,49 +14,123 @@ function initializePresentation() {
     // Add keyboard navigation
     document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
             nextSlide();
         } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
             previousSlide();
         } else if (e.key >= '1' && e.key <= '6') {
+            e.preventDefault();
             goToSlide(parseInt(e.key) - 1);
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            goToSlide(0);
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            goToSlide(totalSlides - 1);
         }
     });
 
-    // Add touch/swipe support for mobile
+    // Enhanced touch/swipe support for mobile
     let startX = 0;
     let startY = 0;
+    let endX = 0;
+    let endY = 0;
+    let isSwipeGesture = false;
+    const minSwipeDistance = 50; // Minimum distance for swipe
+    const maxVerticalDistance = 100; // Maximum vertical movement for horizontal swipe
 
     document.addEventListener('touchstart', function(e) {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
-    });
+        isSwipeGesture = false;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function(e) {
+        if (!startX || !startY) return;
+        
+        endX = e.touches[0].clientX;
+        endY = e.touches[0].clientY;
+        
+        const diffX = Math.abs(endX - startX);
+        const diffY = Math.abs(endY - startY);
+        
+        // If horizontal movement is significant and vertical is minimal
+        if (diffX > minSwipeDistance && diffY < maxVerticalDistance) {
+            isSwipeGesture = true;
+            e.preventDefault(); // Prevent scrolling during swipe
+        }
+    }, { passive: false });
 
     document.addEventListener('touchend', function(e) {
-        if (!startX || !startY) return;
+        if (!startX || !startY || !isSwipeGesture) {
+            startX = 0;
+            startY = 0;
+            return;
+        }
 
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
+        const diffX = endX - startX;
+        const diffY = Math.abs(endY - startY);
 
-        const diffX = startX - endX;
-        const diffY = startY - endY;
-
-        // Only trigger if horizontal swipe is greater than vertical
-        if (Math.abs(diffX) > Math.abs(diffY)) {
-            if (Math.abs(diffX) > 50) { // Minimum swipe distance
-                if (diffX > 0) {
-                    nextSlide(); // Swipe left - next slide
-                } else {
-                    previousSlide(); // Swipe right - previous slide
-                }
+        // Ensure it's a horizontal swipe
+        if (Math.abs(diffX) > minSwipeDistance && diffY < maxVerticalDistance) {
+            if (diffX > 0) {
+                // Swipe right - go to previous slide
+                previousSlide();
+            } else {
+                // Swipe left - go to next slide
+                nextSlide();
             }
         }
 
+        // Reset values
         startX = 0;
         startY = 0;
+        endX = 0;
+        endY = 0;
+        isSwipeGesture = false;
+    }, { passive: true });
+
+    // Add double-tap to toggle fullscreen on mobile
+    let lastTouchTime = 0;
+    let tapCount = 0;
+    document.addEventListener('touchend', function(e) {
+        const currentTime = new Date().getTime();
+        const tapLength = currentTime - lastTouchTime;
+        
+        if (tapLength < 300 && tapLength > 0) {
+            tapCount++;
+            if (tapCount === 2) {
+                // Double tap detected
+                toggleFullscreen();
+                tapCount = 0;
+            }
+        } else {
+            tapCount = 1;
+        }
+        lastTouchTime = currentTime;
+        
+        // Reset tap count after delay
+        setTimeout(() => {
+            tapCount = 0;
+        }, 300);
     });
 
     // Initialize slide animations
     initializeAnimations();
+    
+    // Add orientation change handler
+    window.addEventListener('orientationchange', function() {
+        setTimeout(() => {
+            // Recalculate layout after orientation change
+            triggerSlideAnimations(currentSlide);
+        }, 100);
+    });
+    
+    // Add resize handler for responsive behavior
+    window.addEventListener('resize', debounce(function() {
+        triggerSlideAnimations(currentSlide);
+    }, 250));
 }
 
 // Slide navigation functions
@@ -86,6 +160,9 @@ function goToSlide(slideNumber) {
     document.querySelectorAll('.nav-link')[slideNumber].classList.add('active');
     document.querySelectorAll('.indicator')[slideNumber].classList.add('active');
 
+    // Close mobile menu if open
+    closeMobileMenu();
+
     // Trigger slide-specific animations
     triggerSlideAnimations(slideNumber);
 
@@ -93,6 +170,17 @@ function goToSlide(slideNumber) {
     if (slideNumber === 4) {
         startJourneyDemo();
     }
+}
+
+// Mobile menu functions
+function toggleMobileMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.toggle('mobile-open');
+}
+
+function closeMobileMenu() {
+    const navLinks = document.getElementById('nav-links');
+    navLinks.classList.remove('mobile-open');
 }
 
 // Animation system
@@ -752,3 +840,64 @@ const demoStyles = `
 const demoStyleSheet = document.createElement('style');
 demoStyleSheet.textContent = demoStyles;
 document.head.appendChild(demoStyleSheet);
+
+// Fullscreen toggle function
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.log('Fullscreen not supported or denied');
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Mobile-specific optimizations
+function initializeMobileOptimizations() {
+    // Prevent zoom on double tap for specific elements
+    const preventZoomElements = document.querySelectorAll('.nav-link, .control-btn, .indicator');
+    preventZoomElements.forEach(element => {
+        element.addEventListener('touchend', function(e) {
+            e.preventDefault();
+        });
+    });
+    
+    // Add visual feedback for touch interactions
+    document.addEventListener('touchstart', function(e) {
+        if (e.target.classList.contains('nav-link') || 
+            e.target.classList.contains('control-btn') || 
+            e.target.classList.contains('indicator')) {
+            e.target.style.transform = 'scale(0.95)';
+        }
+    });
+    
+    document.addEventListener('touchend', function(e) {
+        if (e.target.classList.contains('nav-link') || 
+            e.target.classList.contains('control-btn') || 
+            e.target.classList.contains('indicator')) {
+            e.target.style.transform = '';
+        }
+    });
+}
+
+// Call mobile optimizations when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.innerWidth <= 768) {
+        initializeMobileOptimizations();
+    }
+});
