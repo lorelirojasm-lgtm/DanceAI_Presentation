@@ -49,15 +49,17 @@ document.addEventListener('DOMContentLoaded', function() {
 function updateDemoContent(stepNumber) {
     const demoContent = document.getElementById('demo-content');
     const contents = {
-        1: '<div class="login-form"><h4>Login as Student/Teacher</h4><div class="form-preview">📝 Registration Form</div></div>',
-        2: '<div class="upload-interface"><h4>Upload Dance Video</h4><div class="upload-zone">📁 Drag & Drop Video</div></div>',
-        3: '<div class="ai-processing"><h4>AI Analysis in Progress</h4><div class="processing-animation">🤖 Analyzing poses...</div></div>',
-        4: '<div class="feedback-display"><h4>Feedback Results</h4><div class="score-display">Score: 87/100</div></div>',
-        5: '<div class="progress-tracking"><h4>Progress Dashboard</h4><div class="chart-preview">📊 Performance Chart</div></div>'
+        1: '<div class="login-form"><h4>👤 Login as Student/Teacher</h4><div class="form-preview">📝 Registration & Authentication</div></div>',
+        2: '<div class="upload-interface"><h4>📹 Upload Dance Video</h4><div class="upload-zone">📁 Drag & Drop Video Files</div></div>',
+        3: '<div class="ai-processing"><h4>🤖 AI Analysis in Progress</h4><div class="processing-animation">🔍 Analyzing poses and movements...</div></div>',
+        4: '<div class="feedback-display"><h4>📊 Feedback Results</h4><div class="score-display">Score: 87/100<br/>🎯 Posture corrections needed</div></div>',
+        5: '<div class="progress-tracking"><h4>📈 Progress Dashboard</h4><div class="chart-preview">📊 Performance improvements over time</div></div>'
     };
     
     demoContent.innerHTML = contents[stepNumber] || contents[1];
 }
 
 // Initialize demo content
-updateDemoContent(1);
+document.addEventListener('DOMContentLoaded', function() {
+    updateDemoContent(1);
+});
