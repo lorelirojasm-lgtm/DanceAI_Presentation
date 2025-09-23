@@ -1,444 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#6366f1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DanceAI - AI-Powered Dance Learning Platform</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="presentation-container">
-        <!-- Navigation -->
-        <nav class="nav-bar">
-            <div class="nav-content">
-                <div class="logo">
-                    <i class="fas fa-dancing"></i>
-                    <span>DanceAI</span>
-                </div>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="nav-links" id="nav-links">
-                    <button onclick="goToSlide(0)" class="nav-link active">Home</button>
-                    <button onclick="goToSlide(1)" class="nav-link">Overview</button>
-                    <button onclick="goToSlide(2)" class="nav-link">Features</button>
-                    <button onclick="goToSlide(3)" class="nav-link">Technology</button>
-                    <button onclick="goToSlide(4)" class="nav-link">Demo</button>
-                    <button onclick="goToSlide(5)" class="nav-link">Architecture</button>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Slide 1: Hero/Title Slide -->
-        <section class="slide active" id="slide-0">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="gradient-text">DanceAI</span>
-                    </h1>
-                    <p class="hero-subtitle">AI-Powered Dance Learning Platform</p>
-                    <p class="hero-description">
-                        Revolutionizing dance education through advanced pose analysis, 
-                        intelligent feedback, and personalized learning experiences
-                    </p>
-                    <div class="hero-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-robot"></i>
-                            AI-Powered Analysis
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-video"></i>
-                            Real-time Feedback
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-trophy"></i>
-                            Gamified Learning
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="dance-animation">
-                        <div class="dancer-silhouette">
-                            <div class="pose-points"></div>
-                        </div>
-                        <div class="ai-overlay">
-                            <div class="ai-scan-line"></div>
-                            <div class="analysis-badge">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Analyzing Movement...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 2: Problem & Solution -->
-        <section class="slide" id="slide-1">
-            <div class="slide-content">
-                <h2 class="slide-title">Transforming Dance Education</h2>
-                
-                <div class="problem-solution">
-                    <div class="problem-section">
-                        <h3><i class="fas fa-exclamation-triangle"></i> The Challenge</h3>
-                        <ul class="challenge-list">
-                            <li>Limited access to personalized dance instruction</li>
-                            <li>Difficulty in receiving real-time feedback</li>
-                            <li>Subjective assessment of dance performances</li>
-                            <li>Lack of structured practice progression</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="solution-section">
-                        <h3><i class="fas fa-lightbulb"></i> Our Solution</h3>
-                        <div class="solution-cards">
-                            <div class="solution-card">
-                                <i class="fas fa-brain"></i>
-                                <h4>AI-Powered Analysis</h4>
-                                <p>Advanced pose detection and comparison algorithms</p>
-                            </div>
-                            <div class="solution-card">
-                                <i class="fas fa-comments"></i>
-                                <h4>Instant Feedback</h4>
-                                <p>Real-time suggestions for improvement</p>
-                            </div>
-                            <div class="solution-card">
-                                <i class="fas fa-chart-line"></i>
-                                <h4>Progress Tracking</h4>
-                                <p>Detailed analytics and performance history</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 3: Key Features -->
-        <section class="slide" id="slide-2">
-            <div class="slide-content">
-                <h2 class="slide-title">Powerful Features</h2>
-                
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-video"></i>
-                        </div>
-                        <h3>Video Analysis</h3>
-                        <p>Upload student and teacher videos for AI-powered pose comparison and detailed movement analysis.</p>
-                        <div class="feature-demo">
-                            <div class="demo-placeholder">
-                                <i class="fas fa-play"></i>
-                                <span>Video Upload Demo</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>Key Moment Feedback</h3>
-                        <p>Identify critical dance moments and receive specific feedback with scores from 0-100.</p>
-                        <div class="feature-demo">
-                            <div class="score-display">
-                                <div class="score-circle">
-                                    <span class="score-number">87</span>
-                                    <span class="score-label">Score</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <h3>Challenge System</h3>
-                        <p>Teachers create challenges, students participate, and compete on dynamic leaderboards.</p>
-                        <div class="feature-demo">
-                            <div class="leaderboard-preview">
-                                <div class="leaderboard-item">🥇 Sarah - 94/100</div>
-                                <div class="leaderboard-item">🥈 Mike - 89/100</div>
-                                <div class="leaderboard-item">🥉 Alex - 85/100</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Role-Based Access</h3>
-                        <p>Separate interfaces for students and teachers with appropriate tools and permissions.</p>
-                        <div class="feature-demo">
-                            <div class="role-badges">
-                                <span class="role-badge student">Student</span>
-                                <span class="role-badge teacher">Teacher</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-history"></i>
-                        </div>
-                        <h3>Practice History</h3>
-                        <p>Track progress over time with detailed session history and performance analytics.</p>
-                        <div class="feature-demo">
-                            <div class="progress-chart">
-                                <div class="progress-bar">
-                                    <div class="progress-fill" style="width: 75%"></div>
-                                </div>
-                                <span>Progress: 75%</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-sync"></i>
-                        </div>
-                        <h3>Feedback Refinement</h3>
-                        <p>Mark mismatches and refresh feedback for improved accuracy and personalized learning.</p>
-                        <div class="feature-demo">
-                            <div class="refresh-animation">
-                                <i class="fas fa-sync-alt rotating"></i>
-                                <span>Refining...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 4: Technology Stack -->
-        <section class="slide" id="slide-3">
-            <div class="slide-content">
-                <h2 class="slide-title">Technology Stack</h2>
-                
-                <div class="tech-stack">
-                    <div class="tech-category">
-                        <h3><i class="fas fa-desktop"></i> Frontend</h3>
-                        <div class="tech-items">
-                            <div class="tech-item">
-                                <i class="fab fa-react"></i>
-                                <span>React</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fab fa-js"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fab fa-css3"></i>
-                                <span>CSS3</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tech-category">
-                        <h3><i class="fas fa-server"></i> Backend</h3>
-                        <div class="tech-items">
-                            <div class="tech-item">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-rocket"></i>
-                                <span>FastAPI</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-database"></i>
-                                <span>Database</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tech-category">
-                        <h3><i class="fas fa-brain"></i> AI/ML</h3>
-                        <div class="tech-items">
-                            <div class="tech-item">
-                                <i class="fas fa-eye"></i>
-                                <span>OpenCV</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-running"></i>
-                                <span>Pose Detection</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-chart-line"></i>
-                                <span>DTW Algorithm</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tech-category">
-                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                        <div class="tech-items">
-                            <div class="tech-item">
-                                <i class="fab fa-microsoft"></i>
-                                <span>Azure</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-container"></i>
-                                <span>Docker</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="fas fa-hdd"></i>
-                                <span>Blob Storage</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 5: User Journey Demo -->
-        <section class="slide" id="slide-4">
-            <div class="slide-content">
-                <h2 class="slide-title">User Journey</h2>
-                
-                <div class="journey-timeline">
-                    <div class="journey-step active" data-step="1">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Register & Login</h3>
-                            <p>Users create accounts as students or teachers</p>
-                        </div>
-                    </div>
-
-                    <div class="journey-step" data-step="2">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Upload Videos</h3>
-                            <p>Students upload their dance attempts, teachers provide reference videos</p>
-                        </div>
-                    </div>
-
-                    <div class="journey-step" data-step="3">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>AI Analysis</h3>
-                            <p>Advanced algorithms analyze pose keypoints and movements</p>
-                        </div>
-                    </div>
-
-                    <div class="journey-step" data-step="4">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h3>Receive Feedback</h3>
-                            <p>Get detailed feedback with scores and improvement suggestions</p>
-                        </div>
-                    </div>
-
-                    <div class="journey-step" data-step="5">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h3>Track Progress</h3>
-                            <p>Monitor improvement over time and compete on leaderboards</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="journey-demo">
-                    <div class="demo-screen">
-                        <div class="demo-content" id="demo-content">
-                            <!-- Dynamic content will be loaded here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 6: Architecture -->
-        <section class="slide" id="slide-5">
-            <div class="slide-content">
-                <h2 class="slide-title">System Architecture</h2>
-                
-                <div class="architecture-diagram">
-                    <div class="arch-layer">
-                        <h3>Frontend Layer</h3>
-                        <div class="arch-components">
-                            <div class="arch-component react">
-                                <i class="fab fa-react"></i>
-                                <span>React App</span>
-                            </div>
-                            <div class="arch-component">
-                                <i class="fas fa-mobile"></i>
-                                <span>Responsive UI</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arch-layer">
-                        <h3>API Layer</h3>
-                        <div class="arch-components">
-                            <div class="arch-component fastapi">
-                                <i class="fas fa-rocket"></i>
-                                <span>FastAPI</span>
-                            </div>
-                            <div class="arch-component">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Authentication</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arch-layer">
-                        <h3>AI Processing</h3>
-                        <div class="arch-components">
-                            <div class="arch-component ai">
-                                <i class="fas fa-brain"></i>
-                                <span>Pose Analysis</span>
-                            </div>
-                            <div class="arch-component">
-                                <i class="fas fa-video"></i>
-                                <span>Video Processing</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arch-layer">
-                        <h3>Data Layer</h3>
-                        <div class="arch-components">
-                            <div class="arch-component azure">
-                                <i class="fab fa-microsoft"></i>
-                                <span>Azure Blob</span>
-                            </div>
-                            <div class="arch-component">
-                                <i class="fas fa-database"></i>
-                                <span>Database</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Navigation Controls -->
-        <div class="slide-controls">
-            <button class="control-btn" onclick="previousSlide()">
-                <i class="fas fa-chevron-left"></i>
+      <!-- Navigation -->
+      <nav class="nav-bar">
+        <div class="nav-content">
+          <div class="logo">
+            <i class="fas fa-dancing"></i>
+            <span>DanceAI</span>
+          </div>
+          <div class="nav-links">
+            <button onclick="goToSlide(0)" class="nav-link active">Home</button>
+            <button onclick="goToSlide(1)" class="nav-link">Overview</button>
+            <button onclick="goToSlide(2)" class="nav-link">Features</button>
+            <button onclick="goToSlide(3)" class="nav-link">Technology</button>
+            <button onclick="goToSlide(4)" class="nav-link">Demo</button>
+            <button onclick="goToSlide(5)" class="nav-link">
+              Applications
             </button>
-            <div class="slide-indicators">
-                <span class="indicator active" onclick="goToSlide(0)"></span>
-                <span class="indicator" onclick="goToSlide(1)"></span>
-                <span class="indicator" onclick="goToSlide(2)"></span>
-                <span class="indicator" onclick="goToSlide(3)"></span>
-                <span class="indicator" onclick="goToSlide(4)"></span>
-                <span class="indicator" onclick="goToSlide(5)"></span>
-            </div>
-            <button class="control-btn" onclick="nextSlide()">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+          </div>
         </div>
+      </nav>
+
+      <!-- Slide 1: Hero/Title Slide -->
+      <section class="slide active" id="slide-0">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              <span class="gradient-text">DanceAI</span>
+            </h1>
+            <p class="hero-subtitle">AI-Powered Dance Learning Platform</p>
+            <p class="hero-description">
+              Revolutionizing dance education through advanced pose analysis,
+              intelligent feedback, and personalized learning experiences
+            </p>
+            <div class="hero-features">
+              <div class="feature-tag">
+                <i class="fas fa-robot"></i>
+                AI-Powered Analysis
+              </div>
+              <div class="feature-tag">
+                <i class="fas fa-video"></i>
+                Personalized Feedback
+              </div>
+              <div class="feature-tag">
+                <i class="fas fa-trophy"></i>
+                Gamified Learning
+              </div>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="dance-animation">
+              <div class="dancer-image-hero">
+                <img
+                  src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=600&q=80"
+                  alt="Dancer"
+                  class="hero-dancer-photo"
+                />
+
+                <!-- Pose detection points overlay -->
+                <div class="pose-points-hero-overlay">
+                  <div class="pose-point-hero head-point-hero"></div>
+                  <div class="pose-point-hero shoulder-left-hero"></div>
+                  <div class="pose-point-hero shoulder-right-hero"></div>
+                  <div class="pose-point-hero elbow-left-hero"></div>
+                  <div class="pose-point-hero elbow-right-hero"></div>
+                  <div class="pose-point-hero hip-left-hero"></div>
+                  <div class="pose-point-hero hip-right-hero"></div>
+                  <div class="pose-point-hero knee-left-hero"></div>
+                  <div class="pose-point-hero knee-right-hero"></div>
+                </div>
+              </div>
+              <div class="ai-overlay">
+                <div class="ai-scan-line"></div>
+                <div class="analysis-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Analyzing Movement...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2: Problem & Solution -->
+      <section class="slide" id="slide-1">
+        <div class="slide-content">
+          <h2 class="slide-title">Transforming Dance Education</h2>
+
+          <div class="problem-solution">
+            <div class="problem-section">
+              <h3><i class="fas fa-exclamation-triangle"></i> The Challenge</h3>
+              <ul class="challenge-list">
+                <li>Limited access to personalized dance instruction</li>
+                <li>Difficulty in receiving multiple feedback</li>
+                <li>Subjective assessment of dance performances</li>
+                <li>Lack of structured practice progression</li>
+              </ul>
+            </div>
+
+            <div class="solution-section">
+              <h3><i class="fas fa-lightbulb"></i> Our Solution</h3>
+              <div class="solution-cards">
+                <div class="solution-card">
+                  <i class="fas fa-brain"></i>
+                  <h4>AI-Powered Analysis</h4>
+                  <p>Advanced pose detection and comparison algorithms</p>
+                </div>
+                <div class="solution-card">
+                  <i class="fas fa-comments"></i>
+                  <h4>Instant Feedback</h4>
+                  <p>Personalized suggestions for improvement</p>
+                </div>
+                <div class="solution-card">
+                  <i class="fas fa-chart-line"></i>
+                  <h4>Progress Tracking</h4>
+                  <p>Detailed analytics and performance history</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Key Features -->
+      <section class="slide" id="slide-2">
+        <div class="slide-content">
+          <h2 class="slide-title">Powerful Features</h2>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-video"></i>
+              </div>
+              <h3>Video Analysis</h3>
+              <p>
+                Upload student and teacher videos for AI-powered pose comparison
+                and detailed movement analysis.
+              </p>
+              <div class="feature-demo">
+                <div class="demo-placeholder">
+                  <i class="fas fa-play"></i>
+                  <span>Video Upload Demo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h3>Key Moment Feedback</h3>
+              <p>
+                Identify critical dance moments and receive specific feedback
+                with scores from 0-100.
+              </p>
+              <div class="feature-demo">
+                <div class="score-display">
+                  <div class="score-circle">
+                    <span class="score-number">87</span>
+                    <span class="score-label">Score</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <h3>Challenge System</h3>
+              <p>
+                Teachers create challenges, students participate, and compete on
+                dynamic leaderboards.
+              </p>
+              <div class="feature-demo">
+                <div class="leaderboard-preview">
+                  <div class="leaderboard-item">🥇 Sarah - 94/100</div>
+                  <div class="leaderboard-item">🥈 Mike - 89/100</div>
+                  <div class="leaderboard-item">🥉 Alex - 85/100</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Role-Based Access</h3>
+              <p>
+                Separate interfaces for students and teachers with appropriate
+                tools and permissions.
+              </p>
+              <div class="feature-demo">
+                <div class="role-badges">
+                  <span class="role-badge student">Student</span>
+                  <span class="role-badge teacher">Teacher</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-history"></i>
+              </div>
+              <h3>Practice History</h3>
+              <p>
+                Track progress over time with detailed session history and
+                performance analytics.
+              </p>
+              <div class="feature-demo">
+                <div class="history-display">
+                  <div class="session-counter">
+                    <i class="fas fa-calendar-check"></i>
+                    <span class="session-number">24</span>
+                    <span class="session-label">Sessions</span>
+                  </div>
+                  <div class="history-stats">
+                    <div class="stat-item">
+                      <i class="fas fa-chart-line"></i>
+                      <span>Avg Score: 87</span>
+                    </div>
+                    <div class="stat-item">
+                      <i class="fas fa-trophy"></i>
+                      <span>Best: 96</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-sync"></i>
+              </div>
+              <h3>Feedback Refinement</h3>
+              <p>
+                Mark mismatches and refresh feedback for improved accuracy and
+                personalized learning.
+              </p>
+              <div class="feature-demo">
+                <div class="refresh-animation">
+                  <i class="fas fa-sync-alt rotating"></i>
+                  <span>Refining...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4: Technology Stack -->
+      <section class="slide" id="slide-3">
+        <div class="slide-content">
+          <h2 class="slide-title">Technology Stack</h2>
+
+          <div class="tech-stack">
+            <div class="tech-category">
+              <h3><i class="fas fa-desktop"></i> Frontend</h3>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <i class="fab fa-react"></i>
+                  <span>React</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fab fa-js"></i>
+                  <span>JavaScript</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fab fa-css3"></i>
+                  <span>CSS3</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3><i class="fas fa-server"></i> Backend</h3>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <i class="fab fa-python"></i>
+                  <span>Python</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fas fa-rocket"></i>
+                  <span>FastAPI</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fas fa-database"></i>
+                  <span>SQL Server</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3><i class="fas fa-brain"></i> AI/ML</h3>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <i class="fas fa-eye"></i>
+                  <span>OpenCV</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fas fa-running"></i>
+                  <span>MediaPipe</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fas fa-chart-line"></i>
+                  <span>FastDTW</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="tech-category">
+              <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+              <div class="tech-items">
+                <div class="tech-item">
+                  <i class="fab fa-microsoft"></i>
+                  <span>Azure</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fas fa-bolt"></i>
+                  <span>Azure Functions</span>
+                </div>
+                <div class="tech-item">
+                  <i class="fas fa-hdd"></i>
+                  <span>Azure Blob Storage</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: User Journey Demo -->
+      <section class="slide" id="slide-4">
+        <div class="slide-content">
+          <h2 class="slide-title">User Journey</h2>
+
+          <div class="journey-timeline">
+            <div class="journey-step active" data-step="1">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h3>Register & Login</h3>
+                <p>Users create accounts as students or teachers</p>
+              </div>
+            </div>
+
+            <div class="journey-step" data-step="2">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h3>Upload Videos</h3>
+                <p>
+                  Students upload their dance attempts, teachers provide
+                  reference videos
+                </p>
+              </div>
+            </div>
+
+            <div class="journey-step" data-step="3">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h3>AI Analysis</h3>
+                <p>Advanced algorithms analyze pose keypoints and movements</p>
+              </div>
+            </div>
+
+            <div class="journey-step" data-step="4">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h3>Receive Feedback</h3>
+                <p>
+                  Get detailed feedback with scores and improvement suggestions
+                </p>
+              </div>
+            </div>
+
+            <div class="journey-step" data-step="5">
+              <div class="step-number">5</div>
+              <div class="step-content">
+                <h3>Practice History</h3>
+                <p>
+                  View submitted videos, scores, and detailed session history
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="journey-demo">
+            <div class="demo-screen">
+              <div class="demo-content" id="demo-content">
+                <!-- Dynamic content will be loaded here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Scalability & Applications -->
+      <section class="slide" id="slide-5">
+        <div class="slide-content">
+          <h2 class="slide-title">Endless Possibilities</h2>
+          <p class="scalability-subtitle">
+            Our pose analysis technology scales beyond dance - transforming
+            movement learning across industries
+          </p>
+
+          <div class="applications-grid">
+            <div class="application-category">
+              <div class="category-header">
+                <i class="fas fa-music"></i>
+                <h3>Dance & Performance</h3>
+              </div>
+              <div class="application-items">
+                <div class="app-item">
+                  <i class="fas fa-fire"></i>
+                  <div class="app-content">
+                    <h4>Hip-Hop & Street Dance</h4>
+                    <p>Complex freestyle movements and battle training</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-heart"></i>
+                  <div class="app-content">
+                    <h4>Ballet & Classical</h4>
+                    <p>Precise technique analysis and posture correction</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-globe"></i>
+                  <div class="app-content">
+                    <h4>Cultural & Traditional</h4>
+                    <p>Preserve and teach cultural dance forms worldwide</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="application-category">
+              <div class="category-header">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Fitness & Wellness</h3>
+              </div>
+              <div class="application-items">
+                <div class="app-item">
+                  <i class="fas fa-running"></i>
+                  <div class="app-content">
+                    <h4>Personal Training</h4>
+                    <p>Form correction and exercise technique optimization</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-spa"></i>
+                  <div class="app-content">
+                    <h4>Yoga & Pilates</h4>
+                    <p>Posture alignment and mindful movement guidance</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-heartbeat"></i>
+                  <div class="app-content">
+                    <h4>Physical Therapy</h4>
+                    <p>Rehabilitation monitoring and progress tracking</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="application-category">
+              <div class="category-header">
+                <i class="fas fa-trophy"></i>
+                <h3>Sports & Athletics</h3>
+              </div>
+              <div class="application-items">
+                <div class="app-item">
+                  <i class="fas fa-swimmer"></i>
+                  <div class="app-content">
+                    <h4>Swimming Technique</h4>
+                    <p>Stroke analysis and efficiency improvement</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-medal"></i>
+                  <div class="app-content">
+                    <h4>Gymnastics</h4>
+                    <p>Precision training for complex routines</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-baseball-ball"></i>
+                  <div class="app-content">
+                    <h4>Team Sports</h4>
+                    <p>Movement mechanics and performance analysis</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="application-category">
+              <div class="category-header">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Education & Training</h3>
+              </div>
+              <div class="application-items">
+                <div class="app-item">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  <div class="app-content">
+                    <h4>Instructor Training</h4>
+                    <p>Standardized teaching methods and certification</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-users"></i>
+                  <div class="app-content">
+                    <h4>Group Classes</h4>
+                    <p>Scalable learning for large audiences</p>
+                  </div>
+                </div>
+                <div class="app-item">
+                  <i class="fas fa-mobile-alt"></i>
+                  <div class="app-content">
+                    <h4>Remote Learning</h4>
+                    <p>Accessible movement education anywhere</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="scalability-stats">
+            <div class="stat-card">
+              <i class="fas fa-expand-arrows-alt"></i>
+              <h3>Infinite Scalability</h3>
+              <p>
+                Our AI adapts to any movement pattern, making it perfect for
+                diverse applications
+              </p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-globe-americas"></i>
+              <h3>Global Market Potential</h3>
+              <p>
+                Fitness, dance, and sports industries represent a $96B+ market
+                opportunity
+              </p>
+            </div>
+            <div class="stat-card">
+              <i class="fas fa-rocket"></i>
+              <h3>Future-Ready Technology</h3>
+              <p>
+                Built with cutting-edge AI that continuously learns and improves
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Controls -->
+      <div class="slide-controls">
+        <button class="control-btn" onclick="previousSlide()">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="slide-indicators">
+          <span class="indicator active" onclick="goToSlide(0)"></span>
+          <span class="indicator" onclick="goToSlide(1)"></span>
+          <span class="indicator" onclick="goToSlide(2)"></span>
+          <span class="indicator" onclick="goToSlide(3)"></span>
+          <span class="indicator" onclick="goToSlide(4)"></span>
+          <span class="indicator" onclick="goToSlide(5)"></span>
+        </div>
+        <button class="control-btn" onclick="nextSlide()">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
